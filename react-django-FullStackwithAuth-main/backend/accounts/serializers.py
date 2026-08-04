@@ -10,8 +10,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ['username', 'password', 'email']
         extra_kwargs = {'password':{'write_only': True}}
 
-        def create(self, validated_data):
-            return User.objects.create_user(**validated_data)
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
         
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     username_field = User.EMAIL_FIELD
