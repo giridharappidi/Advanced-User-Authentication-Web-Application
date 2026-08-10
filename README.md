@@ -19,7 +19,7 @@ A full-stack web application built with **React** (frontend) and **Django** (bac
 
 ## 🎯 Overview
 
-This project demonstrates a modern approach to user authentication in a full-stack web application. It combines a React-based frontend with a Django REST API backend to provide a secure, scalable authentication system with features like user registration, login, token-based authentication, and session management.
+This project demonstrates a modern approach to user authentication in a full-stack web application. It combines a React-based frontend with a Django REST API backend to provide a secure, scalable [...]
 
 ## ✨ Features
 
@@ -107,8 +107,11 @@ source venv/bin/activate
 Install dependencies:
 
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+> Note: A `requirements.txt` file has been added at `react-django-FullStackwithAuth-main/backend/requirements.txt`. Consider pinning dependency versions for reproducible installs.
 
 ### 3. Frontend Setup (React)
 
@@ -126,29 +129,44 @@ npm install
 
 ## ⚙️ Configuration
 
-### Backend Configuration
+### Backend Configuration (environment variables)
 
-1. Update database settings in `backend/settings.py`
-2. Set up environment variables (create a `.env` file):
-   ```
-   SECRET_KEY=your_secret_key_here
-   DEBUG=True
-   DATABASE_URL=sqlite:///db.sqlite3
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   ```
+This project uses python-decouple to load secrets and configuration from a `.env` file in the backend directory. Create a file at `react-django-FullStackwithAuth-main/backend/.env` (do NOT commit this file).
 
-3. Run migrations:
-   ```bash
-   cd react-django-FullStackwithAuth-main/backend
-   python manage.py migrate
-   ```
+Example `backend/.env` (DO NOT commit):
+
+```
+SECRET_KEY=django-insecure-_siwt+jp_s&ph&-1c#!kgw)aff=$tgk%ie*9kam+(=s9m8--e&
+DEBUG=True
+DB_NAME=bharathsql
+DB_USER=postgres
+DB_PASSWORD=your_new_rotated_password
+DB_HOST=localhost
+```
+
+Important:
+- Ensure `backend/.env` is listed in `.gitignore` — do not commit secrets.
+- Rotate the SECRET_KEY and DB_PASSWORD if they were previously exposed.
+- For production set `DEBUG=False` and populate `ALLOWED_HOSTS` in `backend/settings.py`.
+- For production secrets, consider using a secret manager (Vault, environment variables in your deployment platform) rather than committing or storing them in source control.
+
+The Django settings are configured to use `python-decouple` (the project reads values via `config('...')`). If you prefer to use environment variables instead of a `.env` file, export them in your shell before running the server.
+
+### Run migrations
+
+With your virtualenv activated and `.env` configured, run:
+
+```bash
+cd react-django-FullStackwithAuth-main/backend
+python manage.py migrate
+```
 
 ### Frontend Configuration
 
-1. Create a `.env` file in the frontend directory:
-   ```
-   REACT_APP_API_URL=http://localhost:8000/api
-   ```
+1. Create a `.env` file in the frontend directory (if needed):
+```
+REACT_APP_API_URL=http://localhost:8000/api
+```
 
 ## ▶️ Running the Application
 
