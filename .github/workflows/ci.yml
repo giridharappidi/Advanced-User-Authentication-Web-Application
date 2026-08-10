@@ -55,7 +55,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: react-django-FullStackwithAuth-main/react-django-FullStackwithAuth-main\frontend
+        working-directory: react-django-FullStackwithAuth-main/frontend
 
     steps:
       - name: Checkout code
