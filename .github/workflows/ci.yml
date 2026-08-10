@@ -22,7 +22,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend
+        working-directory: react-django-FullStackwithAuth-main/backend
 
     steps:
       - name: Checkout code
@@ -44,7 +44,6 @@ jobs:
       - name: Run migrations
         run: python manage.py migrate
 
-      # Note: Ensure 'pytest' and 'pytest-django' are in your requirements.txt!
       - name: Run tests
         run: pytest
 
@@ -56,8 +55,7 @@ jobs:
 
     defaults:
       run:
-        # Assuming your frontend code is inside a 'frontend' folder
-        working-directory: frontend
+        working-directory: react-django-FullStackwithAuth-main/frontend
 
     steps:
       - name: Checkout code
@@ -66,15 +64,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18" # Adjust if you use a different Node version locally
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
 
-      # Verifies that the React app compiles without errors
       - name: Build frontend
         run: npm run build
-
-      # Uncomment the step below if you have written Jest/React Testing Library tests
-      # - name: Run tests
-      #   run: npm test
