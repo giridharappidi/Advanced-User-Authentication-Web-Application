@@ -1,5 +1,7 @@
 # Advanced User Authentication Web Application
 
+![CI](https://github.com/giridharappidi/Advanced-User-Authentication-Web-Application/actions/workflows/ci.yml/badge.svg)
+
 A full-stack web application built with **React** (frontend) and **Django** (backend) that implements advanced user authentication and authorization features.
 
 ## 📋 Table of Contents
@@ -35,16 +37,19 @@ This project demonstrates a modern approach to user authentication in a full-sta
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - **React** - UI library
 - **npm** - Package manager
 - **Create React App** - Build tooling
 
 ### Backend
+
 - **Django** - Web framework
 - **Django REST Framework** - API development
 - **Python** - Programming language
 
 ### Database
+
 - **SQLite** (development) or **PostgreSQL** (production)
 
 ## 📁 Project Structure
@@ -180,6 +185,7 @@ DB_PORT=5432
 ```
 
 **Important Security Notes:**
+
 - Ensure `backend/.env` is listed in `.gitignore` — **never commit secrets**
 - Generate a strong `SECRET_KEY` using: `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
 - Rotate the `SECRET_KEY` and `DB_PASSWORD` if they were previously exposed
@@ -235,6 +241,7 @@ The frontend will run on `http://localhost:3000`
 ### Access the Application
 
 Open your browser and navigate to:
+
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000/api
 - **Django Admin**: http://localhost:8000/admin (username: admin, password: set during superuser creation)
@@ -252,12 +259,14 @@ Open your browser and navigate to:
 ## 📚 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register/` - Register new user
 - `POST /api/auth/login/` - Login user
 - `POST /api/auth/logout/` - Logout user
 - `POST /api/auth/refresh/` - Refresh authentication token
 
 ### Users
+
 - `GET /api/users/profile/` - Get user profile
 - `PUT /api/users/profile/` - Update user profile
 - `POST /api/users/change-password/` - Change password
@@ -292,6 +301,7 @@ The optimized build will be created in the `frontend/build` directory.
 ### Backend Deployment (Django)
 
 For production deployment, consider:
+
 - Using a production WSGI server (Gunicorn, uWSGI)
 - Setting up a reverse proxy (Nginx)
 - Using environment variables from your deployment platform
@@ -302,6 +312,7 @@ For production deployment, consider:
 ### Frontend Deployment (React)
 
 For production deployment, consider:
+
 - Deploying the build folder to a CDN (Vercel, Netlify, GitHub Pages)
 - Using environment variables for API endpoints
 - Setting proper CORS headers in backend
@@ -320,11 +331,13 @@ Contributions are welcome! Here's how to contribute:
 ## 🐛 Troubleshooting
 
 ### Django Issues
+
 - **ModuleNotFoundError**: Ensure virtual environment is activated
 - **Database errors**: Run `python manage.py migrate`
 - **Port already in use**: Change port with `python manage.py runserver 8001`
 
 ### React Issues
+
 - **Dependencies not installing**: Delete `node_modules` and `package-lock.json`, then `npm install`
 - **API connection errors**: Check `REACT_APP_API_URL` in `.env`
 - **CORS errors**: Verify `CORS_ALLOWED_ORIGINS` in Django settings
@@ -336,6 +349,7 @@ This project is open source and available under the MIT License.
 ## 📧 Contact & Support
 
 For questions or support, please:
+
 1. Check existing [issues](https://github.com/giridharappidi/Advanced-User-Authentication-Web-Application/issues)
 2. Create a new issue with detailed information
 3. Include error messages, steps to reproduce, and your environment details
